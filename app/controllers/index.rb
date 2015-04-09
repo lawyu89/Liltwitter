@@ -8,14 +8,28 @@ end
 
 get '/sessions/new' do
   # render sign-in page
+  erb :sign_in
 end
 
 post '/sessions' do
-  # sign-in
+  @user = User.where(email: params[:email]).first
+  if @user.nil?
+    status 404
+    return "User does not exist!"
+  end
+  if @user.password == params[:password]
+    session[:id] = @user.id
+    redirect '/'
+  else
+    @error = "Incorrect email/password combination"
+    erb :sign_in
+  end
 end
 
 delete '/sessions/:id' do
   # sign-out -- invoked
+  session[:id] = nil
+  redirect '/'
 end
 
 #----------- USERS -----------
@@ -31,7 +45,7 @@ post '/users' do
   @user.password = params[:password]
   if @user.save
     session[:id] = @user.id
-    redirect "/users/#{@user.id}"
+    redirect '/'
   else
     erb :sign_up
   end
