@@ -7,7 +7,7 @@ end
 #----------- SESSIONS -----------
 
 get '/sessions/new' do
-  # render sign-in page 
+  # render sign-in page
 end
 
 post '/sessions' do
@@ -15,15 +15,24 @@ post '/sessions' do
 end
 
 delete '/sessions/:id' do
-  # sign-out -- invoked 
+  # sign-out -- invoked
 end
 
 #----------- USERS -----------
 
 get '/users/new' do
-  # render sign-up page
+  erb :'sign_up'
 end
 
 post '/users' do
-  # sign-up a new user
+  @user = User.new
+  @user.username = params[:username]
+  @user.email = params[:email]
+  @user.password = params[:password]
+  if @user.save
+    session[:id] = @user.id
+    redirect "/users/#{@user.id}"
+  else
+    erb :sign_up
+  end
 end
