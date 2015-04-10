@@ -17,6 +17,16 @@
     <% end %>
   </div>
 
+  <div class="body">
+    <div class="tweets-container">
+      <h1><%="#{@somebody_else.username}"%>'s Tweets</h1>
+      <div class="tweets">
+        <% @somebody_else.tweets.each do |tweet| %>
+          <p><%= tweet.message %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
 <% else %>
   <p> You should login </p>

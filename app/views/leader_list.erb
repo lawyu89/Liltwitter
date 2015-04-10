@@ -1,0 +1,11 @@
+<div class="index-all-users">
+  <h1>My Leaders</h1>
+
+  <% @my_leaders.each do |leader| %>
+    <div>
+      <a href="/users/<%= current_user.id %>/profiles/<%= leader.id %>"><%= leader.username %></a>
+    </div>
+  <% end %>
+</div>
+
+

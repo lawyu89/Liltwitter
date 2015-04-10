@@ -79,6 +79,7 @@ get '/users/:id/profiles/:user_id' do
   @somebody_else = User.where(id: params[:user_id]).first
   @user = User.where(id: params[:id]).first
 
+
   erb :other_profile
 end
 
@@ -96,6 +97,18 @@ get '/users/:id/profiles/:user_id/follow' do
   @user = User.where(id: params[:id]).first
 
   @user.leaders << @somebody_else
+  @user.save
 
   erb :other_profile
 end
+
+get '/users/:id/leaders' do
+  @my_leaders = current_user.leaders
+  erb :leader_list
+end
+
+get '/users/:id/minions' do
+  @my_minions = current_user.minions
+  erb :minion_list
+end
+
