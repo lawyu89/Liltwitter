@@ -1,0 +1,23 @@
+<% if session[:id] %>
+  <h1>This is <%= @somebody_else.username %>'s page!</h1>
+
+  <% if @user.leaders.include?(@somebody_else) %>
+    <div class="container">
+      <form action="/users/<%= @user.id %>/profiles/<%= @somebody_else.id %>/unfollow" method="get">
+        <input type="submit" value="Unfollow">
+      </form>
+    </div>
+  <% else %>
+    <div class="container">
+      <form action="/users/<%= @user.id %>/profiles/<%= @somebody_else.id %>/follow" method="get">
+        <input type="submit" value="Follow">
+      </form>
+    </div>
+  <% end %>
+
+
+<% else %>
+  <p> You should login </p>
+<% end %>
+
+

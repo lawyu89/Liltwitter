@@ -1,0 +1,9 @@
+<div class="index-all-users">
+  <h1>Here is a list of all Lil' Twitters!</h1>
+
+  <% @all_users.each do |user| %>
+    <div>
+      <a href="/users/<%= @user.id %>/profiles/<%= user.id %>"><%= user.username %></a>
+    </div>
+  <% end %>
+</div>

@@ -1,15 +1,25 @@
 <% if session[:id] %>
 
   <div class="container">
-    <h1>Welcome <%= @user.email %>!</h1>
+    <h1>Welcome <%= @user.username %>!</h1>
     <form action="#" method="post">
       <input type="text" placeholder="your tweet here" name="tweet">
 
       <input type="submit" value="Tweet!">
     </form>
   </div>
-  <div class="tweets">
-    <h1>Your Tweets</h1>
+  <div class="body">
+    <div class="tweets">
+      <h1>Your Tweets</h1>
+      <% @user.tweets.each do |tweet| %>
+      <p><%= tweet.message %></p>
+      <% end %>
+    </div>
+    <div class="user-links">
+      <p><a href="#">MY MINIONS</a></p>
+      <p><a href="#">MY LEADERS</a></p>
+      <p><a href="/users/<%= @user.id %>/profiles">SEE ALL USERS</a></p>
+    </div>
   </div>
 <% end %>
 

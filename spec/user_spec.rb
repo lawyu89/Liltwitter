@@ -21,5 +21,10 @@ describe User do
     expect(lawrence.leaders).to include lynne
     expect(ginny.leaders).to include lynne
     expect(brick.leaders).to include lynne
+    # puts "lawrence's leaders"
+    # p lawrence.leaders
+    # puts; puts
+    # puts "lynne's minions"
+    # p lynne.minions
   end
 end
