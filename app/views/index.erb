@@ -1,5 +1,16 @@
-<div class="container">
-  <% if session[:id] %>
-  alisfjaskldfjlka
-  <% end %>
-</div>
+<% if session[:id] %>
+
+  <div class="container">
+    <h1>Welcome <%= @user.email %>!</h1>
+    <form action="#" method="post">
+      <input type="text" placeholder="your tweet here" name="tweet">
+
+      <input type="submit" value="Tweet!">
+    </form>
+  </div>
+  <div class="tweets">
+    <h1>Your Tweets</h1>
+  </div>
+<% end %>
+
+
