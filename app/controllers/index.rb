@@ -1,6 +1,4 @@
 get '/' do
-  # render home page
- #TODO: Show all users if user is signed in
   erb :index
 end
 
@@ -8,10 +6,6 @@ get '/users/:id' do
   @user = User.where(id: params[:id]).first
   erb :index
 end
-
-
-
-
 
 
 #----------- SESSIONS -----------
@@ -59,4 +53,38 @@ post '/users' do
   else
     erb :sign_up
   end
+end
+
+get '/users/:id/profiles' do
+  @all_users = User.all
+  @user = User.where(id: params[:id]).first
+
+  erb :index_all_users
+end
+
+
+
+get '/users/:id/profiles/:user_id' do
+  @somebody_else = User.where(id: params[:user_id]).first
+  @user = User.where(id: params[:id]).first
+
+  erb :other_profile
+end
+
+get '/users/:id/profiles/:user_id/unfollow' do
+  @somebody_else = User.where(id: params[:user_id]).first
+  @user = User.where(id: params[:id]).first
+
+  @user.leaders.delete(@somebody_else)
+
+  erb :other_profile
+end
+
+get '/users/:id/profiles/:user_id/follow' do
+  @somebody_else = User.where(id: params[:user_id]).first
+  @user = User.where(id: params[:id]).first
+
+  @user.leaders << @somebody_else
+
+  erb :other_profile
 end

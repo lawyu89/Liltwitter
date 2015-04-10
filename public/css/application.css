@@ -82,3 +82,33 @@ form.quirks {
   background:none;
   font-weight: :bold;
 }
+
+.body > div {
+  display: inline-block;
+  width: 40%;
+}
+
+.tweets {
+  margin-left: 50px;
+}
+.tweets > h1 {
+  margin-left: 50px;
+}
+.tweets > p {
+  margin-left: 100px;
+}
+
+.user-links {
+  margin-left: 100px;
+  text-align: center;
+}
+
+.index-all-users {
+  margin: 150px 0px 0px 50px;
+}
+
+.index-all-users > div > a {
+  font-size: 20px;
+  letter-spacing: 1px;
+  line-height: 150%;
+}
