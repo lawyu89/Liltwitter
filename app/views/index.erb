@@ -18,14 +18,12 @@
       </div>
     </div>
     <div class="user-links-container">
-      <h1><a href="#">MY MINIONS</a></h1>
-      <h1><a href="#">MY LEADERS</a></h1>
-      <h1><a href="/users/<%= @current_user.id %>/profiles">SEE ALL USERS</a></h1>
+      <h1><a href="/users/<%= current_user.id %>/minions">MY MINIONS</a></h1>
+      <h1><a href="/users/<%= current_user.id %>/leaders">MY LEADERS</a></h1>
+      <h1><a href="/users/<%= current_user.id %>/profiles">SEE ALL USERS</a></h1>
     </div>
   </div>
 
   <div class="footer">
   </div>
 <% end %>
-
-

@@ -1,0 +1,11 @@
+<div class="index-all-users">
+  <h1>My Minions</h1>
+
+  <% @my_minions.each do |minion| %>
+    <div>
+      <a href="/users/<%= current_user.id %>/profiles/<%= minion.id %>"><%= minion.username %></a>
+    </div>
+  <% end %>
+</div>
+
+
