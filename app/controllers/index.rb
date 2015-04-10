@@ -1,9 +1,5 @@
 get '/' do
-  erb :index
-end
 
-get '/users/:id' do
-  @user = User.where(id: params[:id]).first
   erb :index
 end
 
@@ -33,13 +29,19 @@ end
 delete '/sessions/:id' do
   # sign-out -- invoked
   session[:id] = nil
+  @current_user= nil
   redirect '/'
 end
 
 #----------- USERS -----------
 
 get '/users/new' do
-  erb :'sign_up'
+  erb :sign_up
+end
+
+get '/users/:id' do
+  @user = User.where(id: params[:id]).first
+  erb :index
 end
 
 post '/users' do
@@ -53,6 +55,16 @@ post '/users' do
   else
     erb :sign_up
   end
+end
+
+post '/users/:id/tweets' do
+  @new_tweet = Tweet.new
+  @new_tweet.message = params[:tweet]
+  @new_tweet.save
+  #@new_tweet.user_id == current_user.id
+  current_user.tweets << @new_tweet
+  current_user.save
+  redirect '/users/:id'
 end
 
 get '/users/:id/profiles' do
