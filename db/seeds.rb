@@ -9,3 +9,13 @@ require 'faker'
 # 5.times do
 #   User.create :name => Faker::Name.name, :email => Faker::Internet.email, :password => 'password'
 # end
+
+5.times do
+  User.create(:username => Faker::Name.name, :email => Faker::Internet.email, :password => 'password')
+end
+
+User.all.each do |user|
+  10.times do
+    user.tweets << Tweet.new(message: Faker::Lorem.sentence)
+  end
+end
