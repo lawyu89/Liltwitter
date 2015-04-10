@@ -2,12 +2,12 @@
   margin: 20px auto;
   width: 800px;
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+  border: 3px solid black;
+  border-radius: 3px;
 }
 
 .container h1 {
   font-size: 17pt;
-
 }
 
 nav {
@@ -50,9 +50,6 @@ form label {
   margin-right: 20px;
 }
 
-.tweets{
-  border: 1px solid black;
-}
 input {
   margin-bottom: 10px;
 }
@@ -83,32 +80,105 @@ form.quirks {
   font-weight: :bold;
 }
 
-.body > div {
-  display: inline-block;
-  width: 40%;
-}
+/**************lynne's experimentation!*************/
 
-.tweets {
-  margin-left: 50px;
-}
-.tweets > h1 {
-  margin-left: 50px;
-}
-.tweets > p {
-  margin-left: 100px;
-}
+/*begin index.erb*/
 
-.user-links {
-  margin-left: 100px;
+.body {
+  display: flex;
   text-align: center;
 }
 
+.body > div  {
+  border: 3px solid black;
+  border-radius: 3px;
+  margin: 0px 4%;
+  width: 40%;
+}
+
+.user-links-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.user-links-container > h1 > a {
+  color: black;
+  text-decoration: none;
+}
+
+.tweets-container > .tweets {
+  text-align: left;
+  margin: 10px 10px 50px 50px;
+}
+
+#tweet-text {
+  height: 30px;
+  margin-left: 50px;
+  width: 500px;
+}
+
+#tweet-button {
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-family: Open Sans;
+  height: 30px;
+  letter-spacing: 1px;
+  margin-left: 10px;
+  width: 100px;
+}
+
+.container {
+  margin: 100px auto;
+}
+
+.footer {
+  height: 100px;
+}
+
+/*end index.erb*/
+
+/*great color combo: 7BE5CD and 563059;*/
+
+/*begin index_all_users.erb*/
+
 .index-all-users {
+  font-family: Open Sans;
   margin: 150px 0px 0px 50px;
 }
 
 .index-all-users > div > a {
+  color: black;
   font-size: 20px;
   letter-spacing: 1px;
-  line-height: 150%;
+  line-height: 300%;
+  margin: 0px 50px;
+  text-decoration: none;
 }
+
+/*end index_all_users.erb*/
+
+
+/*begin other_profile.erb*/
+
+.user-profile {
+  display: flex;
+  margin: 100px 50px;
+}
+
+.unfollow-button, .follow-button {
+  background-color: black;
+  border: 3px solid black;
+  border-radius: 3px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  height: 40px;
+  margin: 25px 100px;
+  width: 120px;
+}
+
+/*end other_profile.erb*/
