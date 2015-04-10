@@ -50,6 +50,9 @@ form label {
   margin-right: 20px;
 }
 
+.tweets{
+  border: 1px solid black;
+}
 input {
   margin-bottom: 10px;
 }

@@ -4,6 +4,16 @@ get '/' do
   erb :index
 end
 
+get '/users/:id' do
+  @user = User.where(id: params[:id]).first
+  erb :index
+end
+
+
+
+
+
+
 #----------- SESSIONS -----------
 
 get '/sessions/new' do
@@ -19,7 +29,7 @@ post '/sessions' do
   end
   if @user.password == params[:password]
     session[:id] = @user.id
-    redirect '/'
+    redirect "/users/#{@user.id}"
   else
     @error = "Incorrect email/password combination"
     erb :sign_in
@@ -45,7 +55,7 @@ post '/users' do
   @user.password = params[:password]
   if @user.save
     session[:id] = @user.id
-    redirect '/'
+    redirect "/users/#{@user.id}"
   else
     erb :sign_up
   end
